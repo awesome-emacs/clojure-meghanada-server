@@ -23,8 +23,10 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 
-import clojure.lang.IFn;
+import clojure.lang.Symbol;
+import clojure.lang.Var;
 import clojure.lang.RT;
+import clojure.lang.IFn;
 
 public class Main {
 
@@ -50,10 +52,10 @@ public class Main {
         IFn load = RT.var("clojure.core", "load"); // XXX not needed?
 
         try {
-            load.invoke("/neko/tools/repl");
-            IFn init = RT.var("neko.tools.repl", "init");
-            init.invoke();
-            log.info("clojure++", "repl loaded");
+            Symbol ns = Symbol.create("clojure.tools.nrepl.server");
+            RT.var("clojure.core", "require").invoke(ns);
+            String instr = RT.var("clojure.tools.nrepl.server", "start-server").invoke().toString();
+            log.info("clojure++", instr);
         } catch (Exception e) {
             log.info("clojure--", "Could not find neko.tools.repl.");
         }
