@@ -55,7 +55,8 @@ public class Main {
             Symbol ns = Symbol.create("clojure.tools.nrepl.server");
             RT.var("clojure.core", "require").invoke(ns);
             String instr = RT.var("clojure.tools.nrepl.server", "start-server").invoke().toString();
-            log.info("clojure++", instr);
+            log.info("clojure++", instr); // instr打印不出来
+            log.info(instr, "~~~~~~~~~"); //
         } catch (Exception e) {
             log.info("clojure--", "Could not find neko.tools.repl.");
         }
