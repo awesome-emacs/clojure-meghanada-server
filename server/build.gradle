@@ -119,6 +119,9 @@ dependencies {
   compile "org.jetbrains.xodus:xodus-compress:$xodusVersion"
   compile 'org.clojure:clojure:1.9.0'
   devImplementation 'org.clojure:tools.namespace:0.3.0-alpha4'
+  implementation 'org.clojure:tools.nrepl:0.2.12', {
+        exclude group: 'org.clojure', module: 'clojure'
+  }
 }
 
 

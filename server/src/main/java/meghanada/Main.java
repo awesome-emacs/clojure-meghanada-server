@@ -23,6 +23,9 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 
+import clojure.lang.IFn;
+import clojure.lang.RT;
+
 public class Main {
 
   public static final String VERSION = "1.0.7";
@@ -41,6 +44,19 @@ public class Main {
     }
     version = Main.VERSION;
     return version;
+  }
+
+  public static void loadRepl() {
+        IFn load = RT.var("clojure.core", "load"); // XXX not needed?
+
+        try {
+            load.invoke("/neko/tools/repl");
+            IFn init = RT.var("neko.tools.repl", "init");
+            init.invoke();
+            log.info("clojure++", "repl loaded");
+        } catch (Exception e) {
+            log.info("clojure--", "Could not find neko.tools.repl.");
+        }
   }
 
   public static void main(String args[]) throws ParseException, IOException {
@@ -127,6 +143,8 @@ public class Main {
     log.debug("set port:{}, projectRoot:{}, output:{}", port, projectRoot, fmt);
     final int portInt = Integer.parseInt(port);
 
+    loadRepl();
+    //new Thread(loadRepl()).start();
     log.info("Meghanada-Server Version:{}", version);
     final Server server = createServer("localhost", portInt, projectRoot, fmt);
     server.startServer();
