@@ -21,3 +21,6 @@
    [org.apache.logging.log4j.core.config Configuration
     LoggerConfig]
    [org.apache.logging.log4j.core.layout PatternLayout]))
+
+;; (EmacsServer. "127.0.0.1" 58888 "./")
+;;  => #object[meghanada.server.emacs.EmacsServer 0x28c76a3d "meghanada.server.emacs.EmacsServer@28c76a3d"]
