@@ -30,3 +30,5 @@ bazel-*
 .vscode
 .#*.*
 /.nb-gradle/
+*.class
+
