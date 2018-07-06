@@ -149,6 +149,20 @@ public class Main {
     loadRepl();
     //new Thread(loadRepl()).start();
     log.info("Meghanada-Server Version:{}", version);
+
+//        try {
+//            Class dalvikCLclass = Class.forName("clojure.lang.DalvikDynamicClassLoader");
+//            Method setContext = dalvikCLclass.getMethod("setContext", Context.class);
+//            setContext.invoke(null, this);
+//            String histr = RT.var("clojure.core", "inc").invoke(10).toString();
+//            log.info("xxxxxxxxxxx");
+//            log.info(histr);
+//        } catch (ClassNotFoundException e) {
+//            log.info("00000000");
+//        } catch (Exception e) {
+//            log.info("11111111");
+//        }
+
     // 你的意思是 ，把整个jar的main 函数，改写成 clojure生成的 class，来去作为 这个jar 项目的启动 中心？
     // 就是你先启动repl服务 器。 然后 发送 (def a (new AAA)) (.run a)
     // 然后 a就是你的对象 。。。你就能用了。
