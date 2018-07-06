@@ -24,7 +24,7 @@ applicationName = 'meghanada-setup'
 
 dependencies {
   compile 'commons-cli:commons-cli:1.4'
-  compile 'org.clojure:clojure:1.9.0'
+  compile 'org.clojure:clojure:1.8.0'
   devImplementation 'org.clojure:tools.namespace:0.3.0-alpha4'
 }
 

@@ -57,6 +57,16 @@ public class Main {
             String instr = RT.var("clojure.tools.nrepl.server", "start-server").invoke().toString();
             log.info("clojure++", instr); // instr打印不出来
             log.info(instr, "~~~~~~~~~"); //
+        RT.loadResourceScript("foo.clj");
+
+        // Get a reference to the foo function.
+        Var foo = RT.var("user", "foo");
+
+        // Call it!
+        Object result = foo.invoke("Hi", "there");
+        //log.info(result, "========");
+        String results = foo.invoke("Hi", "there").toString();
+        log.info(results);
         } catch (Exception e) {
             log.info("clojure--", "Could not find neko.tools.repl.");
         }
