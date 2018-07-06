@@ -25,7 +25,29 @@ public class Foo {
         //Exception in thread "main" java.lang.IllegalStateException: Can't change/establish root binding of: *ns* with set
         //          at clojure.lang.Var.set(Var.java:221)
         //          at clojure.lang.RT$1.invoke(RT.java:241)
+
+        Object abc = RT.var("clojure.core","read-string").invoke(":port");
+        System.out.println(abc); // => :port
+        //Object abcd = RT.var("clojure.core","eval").invoke(RT.var("clojure.core","read-string").invoke("{:port 312312}"));
+        Object abcd = RT.var("clojure.core","read-string").invoke("{:port 312312}");
+        //System.out.println(abcd.invoke(abc) );
+        //System.out.println(abc.invoke(abcd) );
+        //System.out.println(abcd.invoke(abc) );
+        System.out.println(RT.var("clojure.core","get").invoke(abcd, abc).toString()); // => 312312
         
     }
 }
+
+
+//    try {
+//        RT.loadResourceScript("foo.clj");
+//        Var foo = RT.var("user", "foo");
+//        String result = foo.invoke("Hi", "there111").toString();
+//        log.info("foo.clj +++++ ok");
+//        log.info(result);
+//    } catch (Exception e) {
+//        log.info("foo.clj ------- error!!!");
+//        log.info(e);
+//    }
+//
 
