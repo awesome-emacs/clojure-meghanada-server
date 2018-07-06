@@ -40,7 +40,7 @@ If your project were maven project, It needs `maven` and add `mvn` command your 
 ### Build jar
 
 ```
-./gradlew clean goJF check shadowJar
+./gradlew build
 ```
 
 ## Usage Server
