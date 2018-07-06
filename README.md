@@ -45,6 +45,14 @@ If your project were maven project, It needs `maven` and add `mvn` command your 
 
 ## Usage Server
 
+```bash
+
+➜  meghanada-server git:(master) netstat_list
+tcp4       0      0  127.0.0.1.58888        *.*                    LISTEN
+tcp4       0      0  127.0.0.1.59390        *.*                    LISTEN
+
+```
+
 See help.
 
 ```
