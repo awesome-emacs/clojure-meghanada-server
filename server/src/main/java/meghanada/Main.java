@@ -55,18 +55,24 @@ public class Main {
             Symbol ns = Symbol.create("clojure.tools.nrepl.server");
             RT.var("clojure.core", "require").invoke(ns);
             String instr = RT.var("clojure.tools.nrepl.server", "start-server").invoke().toString();
-            log.info("clojure++", instr); // instr打印不出来
-            log.info(instr, "~~~~~~~~~"); //
-        RT.loadResourceScript("foo.clj");
-
-        // Get a reference to the foo function.
-        Var foo = RT.var("user", "foo");
-
-        // Call it!
-        Object result = foo.invoke("Hi", "there");
-        //log.info(result, "========");
-        String results = foo.invoke("Hi", "there").toString();
-        log.info(results);
+            log.info("clojure++");
+            log.info(instr);
+            //Load the namespace 
+            RT.var("clojure.core","eval").invoke(RT.var("clojure.core","read-string").invoke("(ns cljuser) (defonce this-atom (atom nil)) (defn main [this] (reset! this-atom this)) "));
+            //Find a function in namespace
+            IFn fn = (IFn)RT.var("cljuser","main");
+            //Call that function
+            fn.invoke(1111);
+            log.info("clojure++++++++");
+            // RT.loadResourceScript("foo.clj");
+            // // Get a reference to the foo function.
+            // Var foo = RT.var("user", "foo");
+            // // Call it!
+            // Object result = foo.invoke("Hi", "there");
+            // //log.info(result, "========");
+            // String results = foo.invoke("Hi", "there").toString();
+            // log.info(results);
+            
         } catch (Exception e) {
             log.info("clojure--", "Could not find neko.tools.repl.");
         }
