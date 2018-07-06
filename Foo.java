@@ -7,7 +7,7 @@ import clojure.lang.IFn;
 public class Foo {
     public static void main(String[] args) throws Exception {
         // Load the Clojure script -- as a side effect this initializes the runtime.
-        RT.loadResourceScript("foo.clj");
+        RT.loadResourceScript("./server/src/main/java/meghanada/foo.clj");
 
         // Get a reference to the foo function.
         Var foo = RT.var("user", "foo");

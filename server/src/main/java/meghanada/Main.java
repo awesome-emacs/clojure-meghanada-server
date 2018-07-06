@@ -151,6 +151,28 @@ public class Main {
     log.info("Meghanada-Server Version:{}", version);
 
     try {
+        RT.loadResourceScript("./foo.clj");
+        Var foo = RT.var("user", "foo");
+        String result = foo.invoke("Hi", "there111").toString();
+        log.info("foo.clj +++++ ok");
+        log.info(result);
+    } catch (Exception e) {
+        log.info("foo.clj ------- error!!!");
+        log.info(e);
+    }
+
+    try {
+        RT.loadResourceScript("./src/main/java/meghanada/foo.clj");
+        Var foo = RT.var("user", "foo");
+        String result = foo.invoke("Hi", "there111").toString();
+        log.info("foo.clj +++++ ok");
+        log.info(result);
+    } catch (Exception e) {
+        log.info("foo.clj ------- error!!!");
+        log.info(e);
+    }
+
+    try {
         RT.loadResourceScript("foo.clj");
         Var foo = RT.var("user", "foo");
         String result = foo.invoke("Hi", "there111").toString();
@@ -161,6 +183,17 @@ public class Main {
         log.info(e);
     }
 
+    try {
+        RT.loadResourceScript("src/main/java/meghanada/foo.clj");
+        Var foo = RT.var("user", "foo");
+        String result = foo.invoke("Hi", "there111").toString();
+        log.info("foo.clj +++++ ok");
+        log.info(result);
+    } catch (Exception e) {
+        log.info("foo.clj ------- error!!!");
+        log.info(e);
+    }
+    
     // 你的意思是 ，把整个jar的main 函数，改写成 clojure生成的 class，来去作为 这个jar 项目的启动 中心？
     // 就是你先启动repl服务 器。 然后 发送 (def a (new AAA)) (.run a)
     // 然后 a就是你的对象 。。。你就能用了。
