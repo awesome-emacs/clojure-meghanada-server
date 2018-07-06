@@ -13,7 +13,7 @@ public class Foo {
         Var foo = RT.var("user", "foo");
 
         // Call it!
-        Object result = foo.invoke("Hi", "there");
+        String result = foo.invoke("Hi", "there111").toString();
         System.out.println(result);
 
         ///
