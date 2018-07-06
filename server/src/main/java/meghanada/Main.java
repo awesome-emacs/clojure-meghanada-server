@@ -149,8 +149,13 @@ public class Main {
     loadRepl();
     //new Thread(loadRepl()).start();
     log.info("Meghanada-Server Version:{}", version);
-    final Server server = createServer("localhost", portInt, projectRoot, fmt);
-    server.startServer();
+    // 你的意思是 ，把整个jar的main 函数，改写成 clojure生成的 class，来去作为 这个jar 项目的启动 中心？
+    // 就是你先启动repl服务 器。 然后 发送 (def a (new AAA)) (.run a)
+    // 然后 a就是你的对象 。。。你就能用了。
+    // emacs启动java进程，java进程启动repl, repl再启动你的class
+    log.info(portInt); // server.startServer()通过Clojure来启动
+    //final Server server = createServer("localhost", portInt, projectRoot, fmt);
+    //server.startServer();
   }
 
   private static void addFileAppender() throws IOException {
