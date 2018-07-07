@@ -68,6 +68,17 @@ public class JavaAnalyzerTest extends GradleTestBase {
         () -> {
           final CompileResult compileResult = analyzer.analyzeAndCompile(files, cp, tmp);
           compileResult.getSources().values().forEach(Source::dump);
+          log.info("-------------------");
+          log.info(compileResult);
+          log.info("-------------------1111");
+          //log.info(compileResult.getSources().values().forEach(Source::dump));
+          //compileResult.getSources().values().forEach(log.info);
+          log.info(compileResult.getSources().values());
+          log.info("-------------------2222");
+          log.info(files);
+          log.info(cp);
+          log.info(tmp);
+          log.info("-------------------33333");
           return compileResult;
         });
 
