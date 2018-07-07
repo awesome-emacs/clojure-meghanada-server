@@ -183,6 +183,14 @@ class MethodAnalyzeVisitor extends MethodVisitor {
         start,
         end,
         index);
+    log.info("@@@@@@@@@@String name, String description, String signature, Label start, Label end, int index");
+    log.info(name);
+    log.info(description);
+    log.info(signature);
+    log.info(start);
+    log.info(end);
+    log.info(index);
+    log.info("@@@@@@@@@@");
     // boolean hasLvtInfo = true;
     for (int i = 0; i < this.lvtSlotIndex.length; i++) {
       if (this.lvtSlotIndex[i] == index) {
